@@ -1,0 +1,129 @@
+﻿{
+    "brand":  "AniBro",
+    "nav":  {
+                "home":  "Bosh sahifa",
+                "browse":  "Katalog",
+                "admin":  "Admin",
+                "login":  "Kirish",
+                "register":  "Ro\u0027yxatdan o\u0027tish",
+                "logout":  "Chiqish",
+                "profile":  "Profil"
+            },
+    "hero":  {
+                 "eyebrow":  "Mukammal anime platformasi",
+                 "title":  "Qiziqish uyg\u0027otadigan olamlarni tomosha qiling.",
+                 "description":  "Trenddagi animelarni toping, tilni bir zumda almashtiring, progressni avtomatik saqlang va ko\u0027rishni to\u0027xtagan joyingizdan davom ettiring.",
+                 "ctaPrimary":  "Tomosha qilish",
+                 "ctaSecondary":  "Admin panel"
+             },
+    "filters":  {
+                    "search":  "Anime qidirish...",
+                    "genre":  "Janr",
+                    "rating":  "Minimal reyting",
+                    "year":  "Yil",
+                    "allGenres":  "Barcha janrlar",
+                    "allYears":  "Barcha yillar",
+                    "discoveryTitle":  "Aqlli qidiruv",
+                    "discoverySubtitle":  "Nom bo\u0027yicha qidiring, keyin janr, reyting va yil bo\u0027yicha toraytiring.",
+                    "titleLabel":  "Nomi"
+                },
+    "common":  {
+                   "loading":  "Yuklanmoqda...",
+                   "save":  "Saqlash",
+                   "cancel":  "Bekor qilish",
+                   "delete":  "O\u0027chirish",
+                   "edit":  "Tahrirlash",
+                   "create":  "Yaratish",
+                   "update":  "Yangilash",
+                   "submit":  "Yuborish",
+                   "close":  "Yopish",
+                   "actions":  "Amallar",
+                   "optional":  "Ixtiyoriy",
+                   "required":  "Majburiy"
+               },
+    "home":  {
+                 "sectionTitle":  "Yangi qo\u0027shilganlar",
+                 "sectionSubtitle":  "Kino uslubidagi kartalar, tezkor qidiruv va aqlli ko\u0027rish tarixi.",
+                 "empty":  "Filtrlarga mos anime topilmadi.",
+                 "watchContinue":  "Davom ettirish",
+                 "episodes":  "qism"
+             },
+    "anime":  {
+                  "episodes":  "Qismlar",
+                  "overview":  "Tavsif",
+                  "comments":  "Izohlar",
+                  "releaseYear":  "Chiqqan yil",
+                  "rating":  "Reyting",
+                  "playNow":  "Hozir ko\u0027rish",
+                  "continue":  "{{time}} dan davom ettirish",
+                  "nextEpisode":  "Keyingi qism",
+                  "selectEpisode":  "Qismni tanlang",
+                  "skipIntro":  "Intro\u0027ni o\u0027tkazib yuborish",
+                  "noEpisodes":  "Hali qismlar yuklanmagan."
+              },
+    "comments":  {
+                     "title":  "Hamjamiyat fikrlari",
+                     "placeholder":  "Bu anime haqida fikringizni yozing...",
+                     "post":  "Izoh qoldirish",
+                     "empty":  "Hali izoh yo\u0027q. Birinchi bo\u0027lib yozing.",
+                     "loginPrompt":  "Suhbatga qo\u0027shilish uchun tizimga kiring.",
+                     "like":  "Yoqdi",
+                     "dislike":  "Yoqmadi"
+                 },
+    "auth":  {
+                 "welcomeBack":  "Qaytganingiz bilan",
+                 "createAccount":  "Akkaunt yarating",
+                 "username":  "Foydalanuvchi nomi",
+                 "email":  "Email",
+                 "password":  "Parol",
+                 "avatar":  "Avatar URL",
+                 "signIn":  "Kirish",
+                 "signUp":  "Ro\u0027yxatdan o\u0027tish",
+                 "haveAccount":  "Akkauntingiz bormi?",
+                 "needAccount":  "Akkaunt kerakmi?",
+                 "demoAdmin":  "Admin panel orqali anime, qismlar, izohlar va foydalanuvchilarni boshqarish mumkin."
+             },
+    "profile":  {
+                    "title":  "Profil sozlamalari",
+                    "subtitle":  "Ismingiz, avataringiz va parolingizni bitta joydan yangilang.",
+                    "saved":  "Profil muvaffaqiyatli yangilandi.",
+                    "newPassword":  "Yangi parol",
+                    "passwordHint":  "Hozirgi parolni saqlash uchun bo\u0027sh qoldiring"
+                },
+    "admin":  {
+                  "title":  "Boshqaruv markazi",
+                  "subtitle":  "Anime, qismlar, moderatsiya va platforma statistikasini boshqaring.",
+                  "stats":  "Platforma statistikasi",
+                  "animeManager":  "Anime boshqaruvi",
+                  "episodeManager":  "Qismlar boshqaruvi",
+                  "userManager":  "Foydalanuvchilar",
+                  "commentManager":  "Izoh moderatsiyasi",
+                  "users":  "Foydalanuvchilar",
+                  "anime":  "Anime",
+                  "episodes":  "Qismlar",
+                  "comments":  "Izohlar",
+                  "activeWatchers":  "Faol tomoshabinlar",
+                  "ban":  "Ban berish",
+                  "unban":  "Bandan chiqarish",
+                  "newAnime":  "Anime yaratish",
+                  "editAnime":  "Anime tahrirlash",
+                  "newEpisode":  "Qism yaratish",
+                  "editEpisode":  "Qism tahrirlash",
+                  "genresHint":  "Vergul bilan ajrating",
+                  "videoUrl":  "Video URL",
+                  "posterUrl":  "Poster URL",
+                  "bannerUrl":  "Banner URL",
+                  "thumbnailUrl":  "Thumbnail URL",
+                  "introEnd":  "Intro tugash vaqti (sekund)",
+                  "duration":  "Davomiylik (sekund)"
+              },
+    "footer":  {
+                   "tagline":  "Ko\u0027p tilli UX, auto-resume va kuchli admin boshqaruvi bilan anime streaming."
+               },
+    "errors":  {
+                   "generic":  "Xatolik yuz berdi. Qayta urinib ko\u0027ring.",
+                   "notFound":  "Sahifa boshqa vaqt chizig\u0027iga yo\u0027qolib qolgan.",
+                   "unauthorized":  "Avval tizimga kiring.",
+                   "forbidden":  "Bu bo\u0027limga kirish huquqingiz yo\u0027q."
+               }
+}

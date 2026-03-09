@@ -1,0 +1,151 @@
+# AniBro
+
+AniBro is a production-style anime streaming platform scaffold built with a React + Vite + Tailwind v4 frontend and an Express + MongoDB backend. It includes JWT auth, admin-only CRUD routes, comments with like/dislike reactions, continue-watching progress sync, multilingual UI (EN/RU/UZ), and a cinematic dark interface inspired by modern anime streaming products.
+
+## Stack
+
+- Frontend: React 19, Vite, Tailwind CSS v4, React Router, i18next, Axios
+- Backend: Node.js, Express, Mongoose, JWT, bcrypt, Helmet, CORS, express-validator
+- Database: MongoDB Atlas
+
+## Project structure
+
+```text
+anime-platform/
++- frontend/
+¦  +- public/
+¦  +- src/
+¦  ¦  +- components/
+¦  ¦  +- context/
+¦  ¦  +- hooks/
+¦  ¦  +- i18n/
+¦  ¦  +- layouts/
+¦  ¦  +- pages/
+¦  ¦  +- services/
+¦  ¦  L- utils/
+¦  +- index.html
+¦  +- package.json
+¦  L- vite.config.js
++- backend/
+¦  +- src/
+¦  ¦  +- controllers/
+¦  ¦  +- middleware/
+¦  ¦  +- models/
+¦  ¦  +- routes/
+¦  ¦  L- utils/
+¦  +- package.json
+¦  L- server.js
++- .env.example
++- package.json
+L- README.md
+```
+
+## Features
+
+- User registration, login, profile loading, JWT-protected API access
+- Role-based admin dashboard for anime, episode, user, and comment moderation
+- Anime catalog search and filtering by title, genre, rating, and year
+- Episode player with next episode, episode switching, skip intro, fullscreen, and 10-second auto-save progress
+- Continue-watching shelf on the homepage
+- Comment posting, deletion, and like/dislike reactions
+- Responsive layout with sticky header, cinematic panels, gradients, and lazy-loaded poster images
+- i18n for English, Russian, and Uzbek
+
+## Environment variables
+
+Root `.env`:
+
+```bash
+PORT=5000
+NODE_ENV=development
+MONGO_URI=mongodb+srv://username:password@cluster.mongodb.net/anime-platform
+JWT_SECRET=replace-with-a-strong-secret
+FRONTEND_URL=http://localhost:5173
+DEFAULT_ADMIN_EMAIL=admin@example.com
+DEFAULT_ADMIN_PASSWORD=ChangeMe123!
+```
+
+Frontend `frontend/.env`:
+
+```bash
+VITE_API_URL=http://localhost:5000/api
+```
+
+## Install and run
+
+From the repo root:
+
+```bash
+npm install
+npm run dev
+```
+
+This starts:
+
+- Frontend on `http://localhost:5173`
+- Backend on `http://localhost:5000`
+
+## API overview
+
+### Auth
+
+- `POST /api/auth/register`
+- `POST /api/auth/login`
+- `GET /api/auth/profile`
+- `PUT /api/auth/profile`
+
+### Anime
+
+- `GET /api/anime`
+- `GET /api/anime/:id`
+- `POST /api/anime` admin only
+- `PUT /api/anime/:id` admin only
+- `DELETE /api/anime/:id` admin only
+
+### Episodes
+
+- `GET /api/episodes/:animeId`
+- `POST /api/episodes` admin only
+- `PUT /api/episodes/:id` admin only
+- `DELETE /api/episodes/:id` admin only
+
+### Comments
+
+- `GET /api/comments/:animeId`
+- `POST /api/comments` authenticated user
+- `POST /api/comments/:id/reaction` authenticated user
+- `DELETE /api/comments/:id` owner or admin
+
+### Watch history
+
+- `GET /api/watch-history/:userId`
+- `POST /api/watch-history`
+
+### Admin
+
+- `GET /api/admin/stats`
+- `GET /api/admin/users`
+- `PUT /api/admin/users/:id/ban`
+- `DELETE /api/admin/comments/:id`
+
+## Deployment
+
+### Frontend on Vercel
+
+1. Import the `frontend` folder as a Vercel project.
+2. Set `VITE_API_URL` to your deployed backend URL plus `/api`.
+3. Build command: `npm run build`
+4. Output directory: `dist`
+
+### Backend on Node hosting
+
+1. Deploy the `backend` workspace or the repo root with workspace support.
+2. Set the root environment variables from `.env.example`.
+3. Run `npm install` and `npm run start`.
+4. Make sure `FRONTEND_URL` matches your frontend origin.
+
+## Notes
+
+- Poster, banner, thumbnail, and avatar inputs currently use hosted URLs. If you want direct uploads, the clean next step is integrating S3, Cloudinary, or UploadThing.
+- The backend seeds a default admin on first boot when `DEFAULT_ADMIN_EMAIL` and `DEFAULT_ADMIN_PASSWORD` are set.
+- For production, use HTTPS, strong secrets, and a managed MongoDB Atlas cluster with IP/network rules.

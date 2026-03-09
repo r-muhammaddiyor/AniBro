@@ -1,0 +1,129 @@
+﻿{
+    "brand":  "AniBro",
+    "nav":  {
+                "home":  "Home",
+                "browse":  "Browse",
+                "admin":  "Admin",
+                "login":  "Login",
+                "register":  "Register",
+                "logout":  "Logout",
+                "profile":  "Profile"
+            },
+    "hero":  {
+                 "eyebrow":  "Ultimate anime streaming platform",
+                 "title":  "Stream worlds worth obsessing over.",
+                 "description":  "Discover trending anime, switch languages instantly, save progress automatically, and continue every episode where you left off.",
+                 "ctaPrimary":  "Start watching",
+                 "ctaSecondary":  "Open admin"
+             },
+    "filters":  {
+                    "search":  "Search anime...",
+                    "genre":  "Genre",
+                    "rating":  "Minimum rating",
+                    "year":  "Year",
+                    "allGenres":  "All genres",
+                    "allYears":  "All years",
+                    "discoveryTitle":  "Smart discovery",
+                    "discoverySubtitle":  "Search by title, then narrow by genre, rating, and year.",
+                    "titleLabel":  "Title"
+                },
+    "common":  {
+                   "loading":  "Loading...",
+                   "save":  "Save",
+                   "cancel":  "Cancel",
+                   "delete":  "Delete",
+                   "edit":  "Edit",
+                   "create":  "Create",
+                   "update":  "Update",
+                   "submit":  "Submit",
+                   "close":  "Close",
+                   "actions":  "Actions",
+                   "optional":  "Optional",
+                   "required":  "Required"
+               },
+    "home":  {
+                 "sectionTitle":  "Latest arrivals",
+                 "sectionSubtitle":  "Cinematic cards, fast search, and smart watch history.",
+                 "empty":  "No anime matched your filters.",
+                 "watchContinue":  "Continue watching",
+                 "episodes":  "episodes"
+             },
+    "anime":  {
+                  "episodes":  "Episodes",
+                  "overview":  "Overview",
+                  "comments":  "Comments",
+                  "releaseYear":  "Release year",
+                  "rating":  "Rating",
+                  "playNow":  "Play now",
+                  "continue":  "Continue from {{time}}",
+                  "nextEpisode":  "Next episode",
+                  "selectEpisode":  "Select episode",
+                  "skipIntro":  "Skip intro",
+                  "noEpisodes":  "No episodes have been uploaded yet."
+              },
+    "comments":  {
+                     "title":  "Community reactions",
+                     "placeholder":  "Share your thoughts about this anime...",
+                     "post":  "Post comment",
+                     "empty":  "No comments yet. Start the conversation.",
+                     "loginPrompt":  "Log in to join the conversation.",
+                     "like":  "Like",
+                     "dislike":  "Dislike"
+                 },
+    "auth":  {
+                 "welcomeBack":  "Welcome back",
+                 "createAccount":  "Create your account",
+                 "username":  "Username",
+                 "email":  "Email",
+                 "password":  "Password",
+                 "avatar":  "Avatar URL",
+                 "signIn":  "Sign in",
+                 "signUp":  "Sign up",
+                 "haveAccount":  "Already have an account?",
+                 "needAccount":  "Need an account?",
+                 "demoAdmin":  "Admin accounts can manage anime, episodes, comments, and users from the dashboard."
+             },
+    "profile":  {
+                    "title":  "Profile settings",
+                    "subtitle":  "Update your public profile details, avatar, and password from one place.",
+                    "saved":  "Profile updated successfully.",
+                    "newPassword":  "New password",
+                    "passwordHint":  "Leave blank to keep your current password"
+                },
+    "admin":  {
+                  "title":  "Control room",
+                  "subtitle":  "Manage anime, episodes, moderation, and platform stats.",
+                  "stats":  "Platform stats",
+                  "animeManager":  "Anime manager",
+                  "episodeManager":  "Episode manager",
+                  "userManager":  "User manager",
+                  "commentManager":  "Comment moderation",
+                  "users":  "Users",
+                  "anime":  "Anime",
+                  "episodes":  "Episodes",
+                  "comments":  "Comments",
+                  "activeWatchers":  "Active watchers",
+                  "ban":  "Ban",
+                  "unban":  "Unban",
+                  "newAnime":  "Create anime",
+                  "editAnime":  "Edit anime",
+                  "newEpisode":  "Create episode",
+                  "editEpisode":  "Edit episode",
+                  "genresHint":  "Comma-separated genres",
+                  "videoUrl":  "Video URL",
+                  "posterUrl":  "Poster URL",
+                  "bannerUrl":  "Banner URL",
+                  "thumbnailUrl":  "Thumbnail URL",
+                  "introEnd":  "Intro end time (seconds)",
+                  "duration":  "Duration (seconds)"
+              },
+    "footer":  {
+                   "tagline":  "Anime streaming with multilingual UX, auto-resume playback, and admin-grade management tools."
+               },
+    "errors":  {
+                   "generic":  "Something went wrong. Please try again.",
+                   "notFound":  "The page you requested drifted into another timeline.",
+                   "unauthorized":  "You need to sign in first.",
+                   "forbidden":  "You do not have access to this area."
+               }
+}
