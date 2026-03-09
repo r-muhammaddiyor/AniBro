@@ -1,5 +1,5 @@
 ﻿import { Compass, Menu, Shield, UserRound, X } from "lucide-react";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext.jsx";
@@ -12,8 +12,20 @@ const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
 
+  useEffect(() => {
+    setIsOpen(false);
+  }, [location.pathname]);
+
+  useEffect(() => {
+    document.body.style.overflow = isOpen ? "hidden" : "";
+
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isOpen]);
+
   const navLinkClass = ({ isActive }) =>
-    `rounded-full px-4 py-2 text-sm font-medium transition ${
+    `rounded-full px-4 py-2.5 text-sm font-medium transition ui-link focus-visible:outline-none ${
       isActive
         ? "bg-gradient-to-r from-orange-500 to-amber-300 text-slate-950 shadow-lg shadow-orange-500/20"
         : "text-slate-300 hover:bg-white/8 hover:text-white"
@@ -21,14 +33,17 @@ const Header = () => {
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-slate-950/80 backdrop-blur-2xl">
-      <div className="container-shell flex min-h-20 items-center justify-between gap-4">
-        <Link to="/" className="flex items-center gap-3">
-          <div className="grid h-11 w-11 place-items-center rounded-2xl bg-gradient-to-br from-orange-500 via-amber-300 to-cyan-400 text-lg font-black text-slate-950 shadow-[0_0_30px_rgba(255,122,24,0.35)]">
+      <div className="container-shell flex min-h-20 items-center justify-between gap-3 py-2">
+        <Link to="/" className="flex min-w-0 items-center gap-3">
+          <div
+            className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl text-lg font-black text-slate-950 shadow-[0_0_30px_rgba(255,122,24,0.35)]"
+            style={{ backgroundImage: "linear-gradient(135deg, var(--accent), var(--accent-2), var(--accent-cool))" }}
+          >
             A
           </div>
-          <div>
-            <p className="font-[Space_Grotesk] text-lg font-bold tracking-wide text-white">AniBro</p>
-            <p className="text-xs uppercase tracking-[0.35em] text-slate-500">Anime Platform</p>
+          <div className="min-w-0">
+            <p className="truncate font-[Space_Grotesk] text-base font-bold tracking-wide text-white sm:text-lg">AniBro</p>
+            <p className="hidden text-[11px] uppercase tracking-[0.32em] text-slate-500 sm:block">Anime Platform</p>
           </div>
         </Link>
 
@@ -57,26 +72,26 @@ const Header = () => {
               <Link
                 to="/profile"
                 state={{ backgroundLocation: location }}
-                className="inline-flex items-center gap-2 rounded-full bg-white/8 px-4 py-2 text-sm text-slate-100 transition hover:bg-white/12"
+                className="inline-flex items-center gap-2 rounded-full bg-white/8 px-4 py-2 text-sm text-slate-100 transition hover:bg-white/12 focus-visible:outline-none"
               >
                 <UserRound size={15} />
-                {user?.username}
+                <span className="max-w-[140px] truncate">{user?.username}</span>
               </Link>
               <button
                 type="button"
                 onClick={logout}
-                className="rounded-full bg-white px-4 py-2 text-sm font-semibold text-slate-950 transition hover:scale-[1.02]"
+                className="rounded-full bg-white px-4 py-2 text-sm font-semibold text-slate-950 transition hover:scale-[1.02] focus-visible:outline-none"
               >
                 {t("nav.logout")}
               </button>
             </div>
           ) : (
             <div className="flex items-center gap-2">
-              <Link className="rounded-full px-4 py-2 text-sm text-slate-200" to="/login">
+              <Link className="rounded-full px-4 py-2 text-sm text-slate-200 transition hover:bg-white/5 hover:text-white focus-visible:outline-none" to="/login">
                 {t("nav.login")}
               </Link>
               <Link
-                className="rounded-full bg-gradient-to-r from-orange-500 to-amber-300 px-4 py-2 text-sm font-semibold text-slate-950"
+                className="rounded-full bg-gradient-to-r from-orange-500 to-amber-300 px-4 py-2 text-sm font-semibold text-slate-950 transition hover:scale-[1.02] focus-visible:outline-none"
                 to="/register"
               >
                 {t("nav.register")}
@@ -88,63 +103,68 @@ const Header = () => {
         <button
           type="button"
           onClick={() => setIsOpen((current) => !current)}
-          className="rounded-full border border-white/10 bg-white/5 p-3 text-white lg:hidden"
+          className="rounded-full border border-white/10 bg-white/5 p-3 text-white transition hover:bg-white/10 focus-visible:outline-none lg:hidden"
           aria-label="Toggle navigation"
+          aria-expanded={isOpen}
+          aria-controls="mobile-nav"
         >
           {isOpen ? <X size={18} /> : <Menu size={18} />}
         </button>
       </div>
 
-      {isOpen ? (
-        <div className="border-t border-white/10 bg-slate-950/95 lg:hidden">
-          <div className="container-shell flex flex-col gap-3 py-4">
-            <NavLink className={navLinkClass} onClick={() => setIsOpen(false)} to="/">
-              {t("nav.home")}
+      <div
+        id="mobile-nav"
+        className={`overflow-hidden border-t border-white/10 bg-slate-950/95 transition-all duration-200 ease-out lg:hidden ${
+          isOpen ? "max-h-[80vh] opacity-100" : "max-h-0 opacity-0"
+        }`}
+      >
+        <div className="container-shell flex flex-col gap-3 py-4">
+          <NavLink className={navLinkClass} onClick={() => setIsOpen(false)} to="/">
+            {t("nav.home")}
+          </NavLink>
+          {isAdmin ? (
+            <NavLink className={navLinkClass} onClick={() => setIsOpen(false)} to="/admin">
+              {t("nav.admin")}
             </NavLink>
-            {isAdmin ? (
-              <NavLink className={navLinkClass} onClick={() => setIsOpen(false)} to="/admin">
-                {t("nav.admin")}
-              </NavLink>
-            ) : null}
-            {isAuthenticated ? (
-              <Link
-                to="/profile"
-                state={{ backgroundLocation: location }}
-                onClick={() => setIsOpen(false)}
-                className="ui-pill"
-              >
-                <UserRound size={15} />
-                {t("nav.profile")}
-              </Link>
-            ) : null}
-            <div className="flex flex-wrap gap-3">
-              <LanguageSwitcher />
-              <DarkModeToggle />
-            </div>
-            {isAuthenticated ? (
-              <button
-                type="button"
-                onClick={logout}
-                className="rounded-full bg-white px-4 py-3 text-sm font-semibold text-slate-950"
-              >
-                {t("nav.logout")}
-              </button>
-            ) : (
-              <div className="grid gap-3">
-                <Link className="rounded-full border border-white/10 px-4 py-3 text-center" to="/login">
-                  {t("nav.login")}
-                </Link>
-                <Link
-                  className="rounded-full bg-gradient-to-r from-orange-500 to-amber-300 px-4 py-3 text-center font-semibold text-slate-950"
-                  to="/register"
-                >
-                  {t("nav.register")}
-                </Link>
-              </div>
-            )}
+          ) : null}
+          {isAuthenticated ? (
+            <Link
+              to="/profile"
+              state={{ backgroundLocation: location }}
+              onClick={() => setIsOpen(false)}
+              className="ui-pill focus-visible:outline-none"
+            >
+              <UserRound size={15} />
+              {t("nav.profile")}
+            </Link>
+          ) : null}
+          <div className="grid gap-3 sm:grid-cols-2">
+            <LanguageSwitcher />
+            <DarkModeToggle />
           </div>
+          {isAuthenticated ? (
+            <button
+              type="button"
+              onClick={logout}
+              className="rounded-full bg-white px-4 py-3 text-sm font-semibold text-slate-950 focus-visible:outline-none"
+            >
+              {t("nav.logout")}
+            </button>
+          ) : (
+            <div className="grid gap-3">
+              <Link className="rounded-full border border-white/10 px-4 py-3 text-center transition hover:bg-white/5 focus-visible:outline-none" to="/login">
+                {t("nav.login")}
+              </Link>
+              <Link
+                className="rounded-full bg-gradient-to-r from-orange-500 to-amber-300 px-4 py-3 text-center font-semibold text-slate-950 transition hover:scale-[1.01] focus-visible:outline-none"
+                to="/register"
+              >
+                {t("nav.register")}
+              </Link>
+            </div>
+          )}
         </div>
-      ) : null}
+      </div>
     </header>
   );
 };

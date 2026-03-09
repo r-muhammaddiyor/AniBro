@@ -1,0 +1,17 @@
+﻿{
+  "name": "AniBro",
+  "short_name": "AniBro",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#050816",
+  "theme_color": "#050816",
+  "description": "Anime streaming platform with favorites, continue watching, recommendations, and multilingual support.",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

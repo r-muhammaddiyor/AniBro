@@ -29,6 +29,12 @@ const userSchema = new mongoose.Schema(
       type: String,
       default: ""
     },
+    favorites: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Anime"
+      }
+    ],
     isBanned: {
       type: Boolean,
       default: false
@@ -39,7 +45,7 @@ const userSchema = new mongoose.Schema(
   }
 );
 
-userSchema.index({ email: 1 });
+userSchema.index({ favorites: 1 });
 
 const User = mongoose.model("User", userSchema);
 

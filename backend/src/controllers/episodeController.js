@@ -1,4 +1,4 @@
-import { body } from "express-validator";
+﻿import { body } from "express-validator";
 import Episode from "../models/Episode.js";
 import Anime from "../models/Anime.js";
 import WatchHistory from "../models/WatchHistory.js";
@@ -11,7 +11,8 @@ export const episodeValidation = [
   body("videoURL").isURL(),
   body("duration").isInt({ min: 1 }),
   body("introEndTime").optional().isInt({ min: 0 }),
-  body("thumbnailURL").optional().isURL()
+  body("thumbnailURL").optional({ values: "falsy" }).isURL(),
+  body("subtitleURL").optional({ values: "falsy" }).isURL()
 ];
 
 export const updateEpisodeValidation = [
@@ -20,7 +21,8 @@ export const updateEpisodeValidation = [
   body("videoURL").optional().isURL(),
   body("duration").optional().isInt({ min: 1 }),
   body("introEndTime").optional().isInt({ min: 0 }),
-  body("thumbnailURL").optional().isURL()
+  body("thumbnailURL").optional({ values: "falsy" }).isURL(),
+  body("subtitleURL").optional({ values: "falsy" }).isURL()
 ];
 
 export const getEpisodesByAnimeId = asyncHandler(async (request, response) => {

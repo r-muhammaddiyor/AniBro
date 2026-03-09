@@ -24,7 +24,8 @@ const initialEpisodeForm = {
   videoURL: "",
   duration: "1440",
   introEndTime: "0",
-  thumbnailURL: ""
+  thumbnailURL: "",
+  subtitleURL: ""
 };
 
 const actionButtonClass = "rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-medium text-slate-100 transition hover:bg-white/10";
@@ -100,7 +101,7 @@ const AdminDashboard = () => {
           getEpisodesByAnimeId(selectedAnimeId)
         ]);
         setComments(commentData);
-        setAnimeEpisodes(episodeData);
+        setAnimeEpisodes(episodeData.episodes || episodeData);
       } catch (_error) {
         setComments([]);
         setAnimeEpisodes([]);
@@ -315,7 +316,8 @@ const AdminDashboard = () => {
                       videoURL: episode.videoURL,
                       duration: String(episode.duration),
                       introEndTime: String(episode.introEndTime || 0),
-                      thumbnailURL: episode.thumbnailURL || ""
+                      thumbnailURL: episode.thumbnailURL || "",
+                      subtitleURL: episode.subtitleURL || ""
                     });
                   }}
                   className={actionButtonClass}

@@ -80,8 +80,13 @@ img {
   background: rgba(255, 122, 24, 0.25);
 }
 
+:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--accent-cool) 75%, white 25%);
+  outline-offset: 3px;
+}
+
 .container-shell {
-  width: min(1200px, calc(100% - 2rem));
+  width: min(1280px, calc(100% - 2rem));
   margin: 0 auto;
 }
 
@@ -158,6 +163,10 @@ img {
   padding-left: 2.9rem;
 }
 
+.ui-input.has-trailing-button {
+  padding-right: 3rem;
+}
+
 .ui-select.has-trailing-icon {
   padding-right: 3rem;
 }
@@ -191,6 +200,14 @@ img {
   color: #e2e8f0;
 }
 
+.ui-link {
+  transition: color 160ms ease, background-color 160ms ease, border-color 160ms ease, transform 160ms ease;
+}
+
+.ui-link:hover {
+  color: white;
+}
+
 .ui-modal-backdrop {
   position: fixed;
   inset: 0;
@@ -210,11 +227,11 @@ img {
 }
 
 .fade-in {
-  animation: fade-in 0.6s ease-out both;
+  animation: fade-in 0.45s ease-out both;
 }
 
 .stagger-up {
-  animation: stagger-up 0.7s ease-out both;
+  animation: stagger-up 0.55s ease-out both;
 }
 
 @keyframes fade-in {
@@ -230,7 +247,7 @@ img {
 @keyframes stagger-up {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(14px);
   }
 
   to {

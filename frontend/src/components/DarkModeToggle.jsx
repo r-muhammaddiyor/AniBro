@@ -10,17 +10,18 @@ const DarkModeToggle = () => {
     localStorage.setItem(STORAGE_KEYS.theme, theme);
   }, [theme]);
 
-  const isDark = theme === "dark";
+  const isClassic = theme === "dark";
 
   return (
     <button
       type="button"
       onClick={() => setTheme((current) => (current === "dark" ? "midnight" : "dark"))}
-      className="ui-pill text-sm"
+      className="ui-pill text-sm transition hover:bg-white/10 focus-visible:outline-none"
       aria-label="Theme toggle"
+      title={isClassic ? "Switch to Midnight theme" : "Switch to Classic theme"}
     >
-      {isDark ? <Moon size={16} /> : <SunMedium size={16} />}
-      {isDark ? "Dark" : "Midnight"}
+      {isClassic ? <Moon size={16} /> : <SunMedium size={16} />}
+      {isClassic ? "Classic" : "Midnight"}
     </button>
   );
 };

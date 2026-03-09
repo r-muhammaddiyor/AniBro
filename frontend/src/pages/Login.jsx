@@ -51,7 +51,7 @@ const Login = () => {
                 type="email"
                 value={form.email}
                 onChange={(event) => setForm((current) => ({ ...current, email: event.target.value }))}
-                className="ui-input pl-11"
+                className="ui-input has-icon"
                 required
               />
             </div>
@@ -65,7 +65,7 @@ const Login = () => {
                 type="password"
                 value={form.password}
                 onChange={(event) => setForm((current) => ({ ...current, password: event.target.value }))}
-                className="ui-input pl-11"
+                className="ui-input has-icon"
                 required
               />
             </div>
@@ -91,3 +91,4 @@ const Login = () => {
 };
 
 export default Login;
+

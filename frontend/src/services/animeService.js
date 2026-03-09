@@ -10,6 +10,34 @@ export const getAnimeList = async (params) => {
   return data;
 };
 
+export const getAnimeAutocomplete = async (query) => {
+  try {
+    const { data } = await api.get("/anime/autocomplete", {
+      params: cleanParams({ q: query })
+    });
+    return data.items;
+  } catch (error) {
+    if (error.response?.status === 404) {
+      return [];
+    }
+
+    throw error;
+  }
+};
+
+export const getAnimeRecommendations = async (id) => {
+  try {
+    const { data } = await api.get(`/anime/${id}/recommendations`);
+    return data.items;
+  } catch (error) {
+    if (error.response?.status === 404) {
+      return [];
+    }
+
+    throw error;
+  }
+};
+
 export const getAnimeById = async (id) => {
   const { data } = await api.get(`/anime/${id}`);
   return data;

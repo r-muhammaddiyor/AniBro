@@ -1,3 +1,4 @@
+import { fileURLToPath } from "url";
 import cors from "cors";
 import express from "express";
 import helmet from "helmet";
@@ -12,6 +13,7 @@ import adminRoutes from "./routes/adminRoutes.js";
 import { errorHandler, notFoundHandler } from "./middleware/errorMiddleware.js";
 
 const app = express();
+const uploadsDirectory = fileURLToPath(new URL("../uploads/", import.meta.url));
 
 app.use(
   cors({
@@ -33,8 +35,9 @@ app.use(
   })
 );
 app.use(morgan("dev"));
-app.use(express.json({ limit: "2mb" }));
-app.use(express.urlencoded({ extended: true }));
+app.use(express.json({ limit: "8mb" }));
+app.use(express.urlencoded({ extended: true, limit: "8mb" }));
+app.use("/uploads", express.static(uploadsDirectory));
 
 app.get("/api/health", (_request, response) => {
   response.json({ status: "ok", timestamp: new Date().toISOString() });

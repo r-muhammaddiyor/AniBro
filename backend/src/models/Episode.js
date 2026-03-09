@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+﻿import mongoose from "mongoose";
 
 const episodeSchema = new mongoose.Schema(
   {
@@ -29,6 +29,10 @@ const episodeSchema = new mongoose.Schema(
       default: 0
     },
     thumbnailURL: {
+      type: String,
+      default: ""
+    },
+    subtitleURL: {
       type: String,
       default: ""
     }

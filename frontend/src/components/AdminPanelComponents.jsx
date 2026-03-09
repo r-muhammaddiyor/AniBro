@@ -175,7 +175,20 @@ export const EpisodeForm = ({ form, animeOptions, onChange, onSubmit, isEditing 
 
       <Input label={t("admin.videoUrl")} value={form.videoURL} onChange={(event) => onChange("videoURL", event.target.value)} required />
 
-      <div className="grid gap-5 xl:grid-cols-3">
+      <div className="grid gap-5 xl:grid-cols-2">
+        <Input
+          label={t("admin.thumbnailUrl")}
+          value={form.thumbnailURL}
+          onChange={(event) => onChange("thumbnailURL", event.target.value)}
+        />
+        <Input
+          label={t("admin.subtitleUrl")}
+          value={form.subtitleURL}
+          onChange={(event) => onChange("subtitleURL", event.target.value)}
+        />
+      </div>
+
+      <div className="grid gap-5 xl:grid-cols-2">
         <Input
           label={t("admin.duration")}
           type="number"
@@ -190,11 +203,6 @@ export const EpisodeForm = ({ form, animeOptions, onChange, onSubmit, isEditing 
           inputMode="numeric"
           value={form.introEndTime}
           onChange={(event) => onChange("introEndTime", event.target.value)}
-        />
-        <Input
-          label={t("admin.thumbnailUrl")}
-          value={form.thumbnailURL}
-          onChange={(event) => onChange("thumbnailURL", event.target.value)}
         />
       </div>
 

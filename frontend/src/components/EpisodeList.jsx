@@ -1,4 +1,4 @@
-import { Play, Tv2 } from "lucide-react";
+﻿import { Play, Tv2 } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { formatDuration } from "../utils/formatters.js";
 
@@ -24,7 +24,7 @@ const EpisodeList = ({ episodes, currentEpisodeId, onSelect }) => {
               key={episode._id}
               type="button"
               onClick={() => onSelect(episode)}
-              className={`flex w-full items-center gap-4 rounded-2xl border px-4 py-3 text-left transition ${
+              className={`flex w-full items-center gap-4 rounded-2xl border px-4 py-3 text-left transition focus-visible:outline-none ${
                 isActive
                   ? "border-orange-400 bg-orange-500/10"
                   : "border-white/10 bg-slate-950/40 hover:border-cyan-400/40 hover:bg-white/5"

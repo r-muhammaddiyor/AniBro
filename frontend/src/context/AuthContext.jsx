@@ -1,5 +1,6 @@
 import { createContext, useEffect, useMemo, useState } from "react";
 import api from "../services/api.js";
+import { addFavorite, getFavorites, removeFavorite } from "../services/favoriteService.js";
 import STORAGE_KEYS from "../utils/storage.js";
 
 export const AuthContext = createContext(null);
@@ -12,33 +13,48 @@ const getStoredUser = () => {
   }
 };
 
+const getRequestMessage = (error) => {
+  const validationMessage = error.response?.data?.errors?.[0]?.message;
+  return validationMessage || error.response?.data?.message || "Something went wrong";
+};
+
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(getStoredUser);
   const [token, setToken] = useState(localStorage.getItem(STORAGE_KEYS.token));
+  const [favorites, setFavorites] = useState([]);
   const [isLoading, setIsLoading] = useState(Boolean(localStorage.getItem(STORAGE_KEYS.token)));
 
   useEffect(() => {
     if (!token) {
+      setFavorites([]);
       setIsLoading(false);
       return;
     }
 
-    const fetchProfile = async () => {
+    const fetchSession = async () => {
       try {
-        const { data } = await api.get("/auth/profile");
-        setUser(data.user);
-        localStorage.setItem(STORAGE_KEYS.user, JSON.stringify(data.user));
+        const { data: profileData } = await api.get("/auth/profile");
+        setUser(profileData.user);
+        localStorage.setItem(STORAGE_KEYS.user, JSON.stringify(profileData.user));
+
+        try {
+          const favoritesData = await getFavorites();
+          setFavorites(favoritesData.items || []);
+        } catch (_error) {
+          setFavorites([]);
+        }
       } catch (_error) {
         localStorage.removeItem(STORAGE_KEYS.token);
         localStorage.removeItem(STORAGE_KEYS.user);
         setToken(null);
         setUser(null);
+        setFavorites([]);
       } finally {
         setIsLoading(false);
       }
     };
 
-    void fetchProfile();
+    void fetchSession();
   }, [token]);
 
   const saveSession = (sessionToken, sessionUser) => {
@@ -49,15 +65,47 @@ export const AuthProvider = ({ children }) => {
   };
 
   const login = async (payload) => {
-    const { data } = await api.post("/auth/login", payload);
-    saveSession(data.token, data.user);
-    return data.user;
+    try {
+      const { data } = await api.post("/auth/login", payload);
+      saveSession(data.token, data.user);
+      return data.user;
+    } catch (error) {
+      throw new Error(getRequestMessage(error));
+    }
   };
 
   const register = async (payload) => {
-    const { data } = await api.post("/auth/register", payload);
-    saveSession(data.token, data.user);
-    return data.user;
+    const cleanedPayload = {
+      username: payload.username?.trim(),
+      email: payload.email?.trim(),
+      password: payload.password,
+      ...(payload.avatarURL ? { avatarURL: payload.avatarURL } : {})
+    };
+
+    try {
+      const { data } = await api.post("/auth/register", cleanedPayload);
+      saveSession(data.token, data.user);
+      return data.user;
+    } catch (error) {
+      const avatarRejected = error.response?.status === 422 && Boolean(cleanedPayload.avatarURL);
+
+      if (!avatarRejected) {
+        throw new Error(getRequestMessage(error));
+      }
+
+      try {
+        const fallbackPayload = {
+          username: cleanedPayload.username,
+          email: cleanedPayload.email,
+          password: cleanedPayload.password
+        };
+        const { data } = await api.post("/auth/register", fallbackPayload);
+        saveSession(data.token, data.user);
+        return data.user;
+      } catch (fallbackError) {
+        throw new Error(getRequestMessage(fallbackError));
+      }
+    }
   };
 
   const logout = () => {
@@ -65,28 +113,63 @@ export const AuthProvider = ({ children }) => {
     localStorage.removeItem(STORAGE_KEYS.user);
     setToken(null);
     setUser(null);
+    setFavorites([]);
   };
 
   const updateProfile = async (payload) => {
-    const { data } = await api.put("/auth/profile", payload);
-    localStorage.setItem(STORAGE_KEYS.user, JSON.stringify(data.user));
-    setUser(data.user);
-    return data.user;
+    try {
+      const cleanedPayload = {
+        username: payload.username?.trim(),
+        email: payload.email?.trim(),
+        ...(payload.avatarURL !== undefined ? { avatarURL: payload.avatarURL } : {}),
+        ...(payload.password ? { password: payload.password } : {})
+      };
+      const { data } = await api.put("/auth/profile", cleanedPayload);
+      localStorage.setItem(STORAGE_KEYS.user, JSON.stringify(data.user));
+      setUser(data.user);
+      return data.user;
+    } catch (error) {
+      throw new Error(getRequestMessage(error));
+    }
+  };
+
+  const refreshFavorites = async () => {
+    if (!token) {
+      setFavorites([]);
+      return [];
+    }
+
+    const data = await getFavorites();
+    setFavorites(data.items || []);
+    return data.items || [];
+  };
+
+  const toggleFavorite = async (animeId) => {
+    const isCurrentlyFavorite = (user?.favoriteAnimeIds || []).includes(animeId);
+    const updatedUser = isCurrentlyFavorite ? await removeFavorite(animeId) : await addFavorite(animeId);
+    localStorage.setItem(STORAGE_KEYS.user, JSON.stringify(updatedUser));
+    setUser(updatedUser);
+    await refreshFavorites();
+    return updatedUser;
   };
 
   const value = useMemo(
     () => ({
       user,
       token,
+      favorites,
       isLoading,
       isAuthenticated: Boolean(user && token),
       isAdmin: user?.role === "admin",
       login,
       register,
       logout,
-      updateProfile
+      updateProfile,
+      refreshFavorites,
+      toggleFavorite,
+      isFavorite: (animeId) => (user?.favoriteAnimeIds || []).includes(animeId)
     }),
-    [isLoading, token, user]
+    [favorites, isLoading, token, user]
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

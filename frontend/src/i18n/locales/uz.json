@@ -25,7 +25,19 @@
                     "allYears":  "Barcha yillar",
                     "discoveryTitle":  "Aqlli qidiruv",
                     "discoverySubtitle":  "Nom bo\u0027yicha qidiring, keyin janr, reyting va yil bo\u0027yicha toraytiring.",
-                    "titleLabel":  "Nomi"
+                    "titleLabel":  "Nomi",
+                    "clearSearch":  "Qidiruvni tozalash",
+                    "sortRating":  "Eng yuqori reyting",
+                    "durationLong":  "Uzun qismlar",
+                    "sortTrending":  "Trenddagi",
+                    "sortAz":  "A dan Z gacha",
+                    "allDurations":  "Barcha davomiyliklar",
+                    "durationShort":  "Qisqa qismlar",
+                    "durationMedium":  "Standart uzunlik",
+                    "sortNew":  "Yangi relizlar",
+                    "sort":  "Saralash",
+                    "duration":  "Davomiylik",
+                    "sortPopular":  "Eng mashhur"
                 },
     "common":  {
                    "loading":  "Yuklanmoqda...",
@@ -46,7 +58,8 @@
                  "sectionSubtitle":  "Kino uslubidagi kartalar, tezkor qidiruv va aqlli ko\u0027rish tarixi.",
                  "empty":  "Filtrlarga mos anime topilmadi.",
                  "watchContinue":  "Davom ettirish",
-                 "episodes":  "qism"
+                 "episodes":  "qism",
+                 "releaseTitle":  "Yangi reliz xabari"
              },
     "anime":  {
                   "episodes":  "Qismlar",
@@ -59,7 +72,11 @@
                   "nextEpisode":  "Keyingi qism",
                   "selectEpisode":  "Qismni tanlang",
                   "skipIntro":  "Intro\u0027ni o\u0027tkazib yuborish",
-                  "noEpisodes":  "Hali qismlar yuklanmagan."
+                  "noEpisodes":  "Hali qismlar yuklanmagan.",
+                  "recommendations":  "Sizga yoqishi mumkin",
+                  "speed":  "Tezlik",
+                  "showSubtitles":  "Subtitrlani ko\u0027rsatish",
+                  "hideSubtitles":  "Subtitrlani yashirish"
               },
     "comments":  {
                      "title":  "Hamjamiyat fikrlari",
@@ -76,19 +93,31 @@
                  "username":  "Foydalanuvchi nomi",
                  "email":  "Email",
                  "password":  "Parol",
-                 "avatar":  "Avatar URL",
                  "signIn":  "Kirish",
                  "signUp":  "Ro\u0027yxatdan o\u0027tish",
                  "haveAccount":  "Akkauntingiz bormi?",
                  "needAccount":  "Akkaunt kerakmi?",
-                 "demoAdmin":  "Admin panel orqali anime, qismlar, izohlar va foydalanuvchilarni boshqarish mumkin."
+                 "demoAdmin":  "Admin panel orqali anime, qismlar, izohlar va foydalanuvchilarni boshqarish mumkin.",
+                 "avatarSelected":  "Rasm tanlandi",
+                 "avatarTypeError":  "Iltimos, rasm faylini tanlang.",
+                 "avatarSizeError":  "Rasm 2MB dan kichik bo\u0027lishi kerak.",
+                 "avatarPick":  "Rasm tanlash",
+                 "avatar":  "Avatar"
              },
     "profile":  {
                     "title":  "Profil sozlamalari",
                     "subtitle":  "Ismingiz, avataringiz va parolingizni bitta joydan yangilang.",
                     "saved":  "Profil muvaffaqiyatli yangilandi.",
                     "newPassword":  "Yangi parol",
-                    "passwordHint":  "Hozirgi parolni saqlash uchun bo\u0027sh qoldiring"
+                    "passwordHint":  "Hozirgi parolni saqlash uchun bo\u0027sh qoldiring",
+                    "badgeStarter":  "Birinchi qism",
+                    "favoritesEmpty":  "Hali sevimlilar yo\u0027q.",
+                    "badgesEmpty":  "Badge ochish uchun tomosha qiling va sevimlilarni saqlang.",
+                    "favoriteAction":  "Sevimliga qo\u0027shish",
+                    "badges":  "Badge\u0027lar",
+                    "favorites":  "Sevimlilar",
+                    "badgeMarathon":  "Marafon tomoshabin",
+                    "badgeCollector":  "Anime kolleksioneri"
                 },
     "admin":  {
                   "title":  "Boshqaruv markazi",
@@ -115,7 +144,8 @@
                   "bannerUrl":  "Banner URL",
                   "thumbnailUrl":  "Thumbnail URL",
                   "introEnd":  "Intro tugash vaqti (sekund)",
-                  "duration":  "Davomiylik (sekund)"
+                  "duration":  "Davomiylik (sekund)",
+                  "subtitleUrl":  "Subtitle URL"
               },
     "footer":  {
                    "tagline":  "Ko\u0027p tilli UX, auto-resume va kuchli admin boshqaruvi bilan anime streaming."

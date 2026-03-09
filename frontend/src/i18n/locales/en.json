@@ -25,7 +25,19 @@
                     "allYears":  "All years",
                     "discoveryTitle":  "Smart discovery",
                     "discoverySubtitle":  "Search by title, then narrow by genre, rating, and year.",
-                    "titleLabel":  "Title"
+                    "titleLabel":  "Title",
+                    "clearSearch":  "Clear search",
+                    "sortRating":  "Top rated",
+                    "durationLong":  "Long episodes",
+                    "sortTrending":  "Trending",
+                    "sortAz":  "A to Z",
+                    "allDurations":  "All durations",
+                    "durationShort":  "Short episodes",
+                    "durationMedium":  "Standard length",
+                    "sortNew":  "New releases",
+                    "sort":  "Sort",
+                    "duration":  "Duration",
+                    "sortPopular":  "Most popular"
                 },
     "common":  {
                    "loading":  "Loading...",
@@ -46,7 +58,8 @@
                  "sectionSubtitle":  "Cinematic cards, fast search, and smart watch history.",
                  "empty":  "No anime matched your filters.",
                  "watchContinue":  "Continue watching",
-                 "episodes":  "episodes"
+                 "episodes":  "episodes",
+                 "releaseTitle":  "New release alert"
              },
     "anime":  {
                   "episodes":  "Episodes",
@@ -59,7 +72,11 @@
                   "nextEpisode":  "Next episode",
                   "selectEpisode":  "Select episode",
                   "skipIntro":  "Skip intro",
-                  "noEpisodes":  "No episodes have been uploaded yet."
+                  "noEpisodes":  "No episodes have been uploaded yet.",
+                  "recommendations":  "You might also like",
+                  "speed":  "Speed",
+                  "showSubtitles":  "Show subtitles",
+                  "hideSubtitles":  "Hide subtitles"
               },
     "comments":  {
                      "title":  "Community reactions",
@@ -76,19 +93,31 @@
                  "username":  "Username",
                  "email":  "Email",
                  "password":  "Password",
-                 "avatar":  "Avatar URL",
                  "signIn":  "Sign in",
                  "signUp":  "Sign up",
                  "haveAccount":  "Already have an account?",
                  "needAccount":  "Need an account?",
-                 "demoAdmin":  "Admin accounts can manage anime, episodes, comments, and users from the dashboard."
+                 "demoAdmin":  "Admin accounts can manage anime, episodes, comments, and users from the dashboard.",
+                 "avatarSelected":  "Image selected",
+                 "avatarTypeError":  "Please choose an image file.",
+                 "avatarSizeError":  "Image must be smaller than 2MB.",
+                 "avatarPick":  "Choose image",
+                 "avatar":  "Avatar"
              },
     "profile":  {
                     "title":  "Profile settings",
                     "subtitle":  "Update your public profile details, avatar, and password from one place.",
                     "saved":  "Profile updated successfully.",
                     "newPassword":  "New password",
-                    "passwordHint":  "Leave blank to keep your current password"
+                    "passwordHint":  "Leave blank to keep your current password",
+                    "badgeStarter":  "First episode",
+                    "favoritesEmpty":  "No favorites yet.",
+                    "badgesEmpty":  "Start watching and saving favorites to unlock badges.",
+                    "favoriteAction":  "Toggle favorite",
+                    "badges":  "Badges",
+                    "favorites":  "Favorites",
+                    "badgeMarathon":  "Marathon viewer",
+                    "badgeCollector":  "Anime collector"
                 },
     "admin":  {
                   "title":  "Control room",
@@ -115,7 +144,8 @@
                   "bannerUrl":  "Banner URL",
                   "thumbnailUrl":  "Thumbnail URL",
                   "introEnd":  "Intro end time (seconds)",
-                  "duration":  "Duration (seconds)"
+                  "duration":  "Duration (seconds)",
+                  "subtitleUrl":  "Subtitle URL"
               },
     "footer":  {
                    "tagline":  "Anime streaming with multilingual UX, auto-resume playback, and admin-grade management tools."
