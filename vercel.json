@@ -17,14 +17,11 @@
       "dest": "backend/server.js"
     },
     {
-      "src": "/(.*)",
-      "dest": "frontend/dist/index.html"
-    }
-  ],
-  "rewrites": [
+      "handle": "filesystem"
+    },
     {
-      "source": "/(.*)",
-      "destination": "/index.html"
+      "src": "/.*",
+      "dest": "frontend/dist/index.html"
     }
   ]
 }
