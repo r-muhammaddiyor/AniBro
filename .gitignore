@@ -13,3 +13,6 @@ Thumbs.db
 coverage
 frontend/.vite
 backend/uploads
+
+.vercel
+.env*.local
