@@ -1,16 +1,24 @@
 {
   "version": 2,
-  "name": "AniBro",
   "builds": [
     {
       "src": "frontend/package.json",
       "use": "@vercel/static-build",
       "config": { "distDir": "dist" }
     },
-    { "src": "backend/**/*.js", "use": "@vercel/node" }
+    {
+      "src": "backend/server.js",
+      "use": "@vercel/node"
+    }
   ],
   "routes": [
-    { "src": "/api/(.*)", "dest": "backend/$1.js" },
-    { "src": "/(.*)", "dest": "frontend/dist/$1" }
+    {
+      "src": "^/api/(.*)",
+      "dest": "backend/server.js"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "frontend/dist/index.html"
+    }
   ]
 }
